@@ -1,12 +1,14 @@
 import React from "react";
+import { connect } from 'react-redux'
 import IconButton from "../template/iconButton";
 
-export default props => {
+const TodoList = props => {
+  
   const renderRows = () => {
     const list = props.list || [];
     return list.map(todo => (
       <tr key={todo._id}>
-        <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
+        <td className={todo.done ? "markedAsDone" : ""}>{todo.description}</td>
         <td>
           <IconButton
             style="success"
@@ -45,3 +47,7 @@ export default props => {
     </table>
   );
 };
+
+const mapStateToProps = state => ({ list: state.todo.list });
+
+export default connect(mapStateToProps)(TodoList);
