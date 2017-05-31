@@ -15,14 +15,15 @@ const INITIAL_STATE = {
       _id: 3,
       description: "estudar para prova matematica discreta amanhã",
       done: true
-    }
-  ]
-};
+    }]
+}
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "DESCRIPTION_CHANGE":
+    case "DESCRIPTION_CHANGED":
       return { ...state, description: action.payload };
+    case "TODO_SEARCHED":
+      return { ...state, list: action.payload.data };
     default:
       return state;
   }
