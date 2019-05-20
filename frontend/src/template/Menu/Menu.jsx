@@ -18,7 +18,7 @@ export default function Menu(props) {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/about">
-                            <span className="item-text">Tópicos</span>
+                            <span className="item-text">Sobre</span>
                         </Link>
                     </li>
                 </ul>
