@@ -1,40 +1,64 @@
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    entry: './src/index.jsx',
-    output: {
-        path: __dirname + '/public',
-        filename: './app.js'
+    /* Entry e output */
+    // entry: './src/app.jsx',
+    // output: {
+    //     filename: 'bundle.js',
+    //     path: path.resolve(__dirname, 'dist')
+    // },
+    
+    /* Loaders */
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: [{
+                    loader: 'babel-loader'
+                }]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "html-loader",
+                        options: { minimize: true }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {},
+                    },
+                ],
+            }, {
+                test: /\.(woof|woof2|ttf|eot|svg*.*)$/,
+                use: ['font-awesome']
+            }
+        ]
     },
     devServer: {
-        port: 8080,
-        contentBase: './public',
+        historyApiFallback: true,
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['*', '.js', '.jsx'],
         alias: {
             modules: __dirname + '/node_modules'
         }
     },
     plugins: [
-        new ExtractTextPlugin('app.css')
-    ],
-    module: {
-        loaders: [{
-            test: /.js[x]?$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/,
-            query: {
-                presets: ['es2015', 'react'],
-                plugins: ['transform-object-rest-spread']
-            }
-        }, {
-            test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-        }, {
-            test: /\.woff|.woff2|.ttf|.eot|.svg*.*$/,
-            loader: 'file'
-        }]
-    }
-}
+        new HtmlWebPackPlugin({
+            template: "./public/index.html",
+            filename: "./index.html"
+        })
+    ]
+};

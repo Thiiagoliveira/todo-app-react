@@ -1,3 +1,4 @@
+//Mapear objeto para o mongo:
 const restful = require('node-restful')
 const mongoose = restful.mongoose
 
