@@ -14,3 +14,9 @@
 .button-default {
     border: 1px solid #c2c2c2 !important;
 }
+
+.grid-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

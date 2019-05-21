@@ -13,14 +13,14 @@ export default function Todo(props) {
     }
     return (
         <div roles='form' className='todoForm row'>
-            <Grid cols='12 9 10'>
+            <Grid cols='8 9 9 10'>
                 <input id='description' className='form-control'
                     placeholder='Adicione uma tarefa'
                     onChange={props.handleChange}
                     onKeyUp={keyHandler}
                     value={props.description}></input>
             </Grid>
-            <Grid cols='12 3 2'>
+            <Grid cols='4 3 3 2' styleGrid=' grid-buttons'>
                 <IconButton style='primary' icon='plus'
                     onClick={props.handleAdd} />
                 <IconButton style='info' icon='search'
@@ -28,6 +28,6 @@ export default function Todo(props) {
                 <IconButton style={'default'} icon='times'
                     onClick={props.handleClear} />
             </Grid>
-        </div>
+        </div >
     )
 }
