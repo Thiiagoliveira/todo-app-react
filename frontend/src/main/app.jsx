@@ -1,6 +1,7 @@
 import 'modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
+import '../template/custom.css';
 
 import Menu from '../template/Menu/Menu'
 import Routes from '../routes/Routes'
