@@ -8,6 +8,7 @@
 - node-restful
 - pm2 / nodemon
 
+
 **Frontend:**
 
 - Webpack 4
@@ -16,3 +17,5 @@
 - React-Router 5
 - Bootstrap 4
 - Axios
+
+*(Server/application - npm run dev) Localhost:8080
